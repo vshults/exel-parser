@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExcelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::post('/file/upload', [ExcelController::class, 'upload'])->middleware('auth.basic')->name('file.upload');
+Route::get('/rows/list', [\App\Http\Controllers\RowsController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');
